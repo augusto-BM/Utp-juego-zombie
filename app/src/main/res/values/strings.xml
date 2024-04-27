@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">zombie game</string>
+
+    //DEFINIMOS LAS VARIABLES DEL MAIN_ACTIVITY
+    <string name="BTNLOGIN">LOGIN</string>
+    <string name="BTNREGISTRO">REGISTRO</string>
+
+    //DEFINIMOS LAS VARIABLES DE REGISTRO
+    <string name="correoEt">Correo Electronico</string>
+    <string name="passEt">Contraseña</string>
+    <string name="nombreEt">Nombre</string>
+    <string name="fechaTxt">Fecha</string>
+    <string name="Registrar">REGISTRAR</string>
+
+    //DEFINIMOS LAS VARIABLES DE LOGIN
+    <string name="correoLogin">Correo Electronico</string>
+    <string name="passLogin">Contraseña</string>
+    <string name="BtnLogin">INICIAR SESION</string>
+
+    //DEFINIMOS LAS VARIABLES DE MENU
+    <string name="MiPuntuaciontxt">Mi Puntuacion</string>
+    <string name="Zombies"> -- </string>
+    <string name="uid"> -- </string>
+    <string name="correo"> -- </string>
+    <string name="nombre"> -- </string>
+    <string name="fecha"> -- </string>
+
+    <string name="Menutxt">Menu</string>
+
+    <string name="JugarBtn">Jugar</string>
+    <string name="PuntuacionesBtn">Puntuaciones</string>
+    <string name="AcercaDeBtn">Acerca de</string>
+    <string name="cerrarSesionBtn">Cerrar Sesion</string>
+
+    //DEFINIMOS VARIABLES DEL ESCENARIO
+    <string name="TvContador">0</string>
+    <string name="TvNombre"> ----- </string>
+    <string name="TvTiempo">0 s</string>
+
+
+    //DEFINIMOS VARIABLES DEL TAMAÑO DE LA PANTALLA
+
+    <string name="AnchoTv">-</string>
+    <string name="AltoTv">-</string>
+</resources>

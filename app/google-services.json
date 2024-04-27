@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "52612786151",
+    "project_id": "utp-juego-de-zombie",
+    "storage_bucket": "utp-juego-de-zombie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52612786151:android:922132696737d84d06ff42",
+        "android_client_info": {
+          "package_name": "com.utp.zombiegame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuTGjAqcc3_k3fz0LT8ZC4_C3G0pIWozQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

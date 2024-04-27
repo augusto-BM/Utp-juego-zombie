@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".Menu">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center">
+
+        <!-- PUNTUACION -->
+        <TextView
+            android:id="@+id/MiPuntuaciontxt"
+            android:text="@string/MiPuntuaciontxt"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ZOMBIES -->
+        <TextView
+            android:id="@+id/Zombies"
+            android:text="@string/Zombies"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- IMAGEN ZOMBIE -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagen"
+            android:src="@drawable/zombie"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+
+        <!-- UID -->
+        <TextView
+            android:id="@+id/uid"
+            android:text="@string/uid"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- CORREO -->
+        <TextView
+            android:id="@+id/correo"
+            android:text="@string/correo"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- NOMBRE DE USUARIO -->
+        <TextView
+            android:id="@+id/nombre"
+            android:text="@string/nombre"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- FECHA DE REGISTRO -->
+        <TextView
+            android:id="@+id/fecha"
+            android:text="@string/fecha"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- TXT -->
+        <TextView
+            android:id="@+id/Menutxt"
+            android:text="@string/Menutxt"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- BOTON JUGAR -->
+        <Button
+            android:id="@+id/JugarBtn"
+            android:text="@string/JugarBtn"
+            android:background="@drawable/boton_personalizado"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- BOTON PUNTUACIONES -->
+        <Button
+            android:id="@+id/PuntuacionesBtn"
+            android:text="@string/PuntuacionesBtn"
+            android:background="@drawable/boton_personalizado"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- BOTON ACERCA DE -->
+        <Button
+            android:id="@+id/AcercaDeBtn"
+            android:text="@string/AcercaDeBtn"
+            android:background="@drawable/boton_personalizado"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- BOTON CERRAR SESION -->
+        <Button
+            android:id="@+id/cerrarSesionBtn"
+            android:text="@string/cerrarSesionBtn"
+            android:background="@drawable/boton_personalizado"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
