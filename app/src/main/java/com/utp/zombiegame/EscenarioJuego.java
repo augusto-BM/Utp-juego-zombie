@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import java.awt.Dialog;
 import java.util.Random;
 
 public class EscenarioJuego extends AppCompatActivity {
@@ -32,6 +33,8 @@ public class EscenarioJuego extends AppCompatActivity {
     //GENERAMOS UN NUMERO RANDOM
     Random aleatorio;
 
+    boolean GameOver = false;
+    Dialog miDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
