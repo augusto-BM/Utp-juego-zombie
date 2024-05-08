@@ -60,6 +60,8 @@ public class EscenarioJuego extends AppCompatActivity {
 
         IvZombie = findViewById(R.id.IvZombie);
 
+        miDialog = new Dialog(EscenarioJuego.this);
+
         //RECUPERAR LOS VALORES TIPO STRING QUE HA ENVIADO LA ACTIVIDAD MENU
         Bundle intent = getIntent().getExtras();
         UIDS = intent.getString("UID");
@@ -80,22 +82,23 @@ public class EscenarioJuego extends AppCompatActivity {
         IvZombie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contador++; //contador aumenta de uno en uno
-                TvContador.setText(String.valueOf(contador)); //seteamos y convertimos a string
-                //La imagen cambia a zombie aplastado
-                IvZombie.setImageResource(R.drawable.zombieaplastado);
+                if(!GameOver){
+                    contador++; //contador aumenta de uno en uno
+                    TvContador.setText(String.valueOf(contador)); //seteamos y convertimos a string
+                    //La imagen cambia a zombie aplastado
+                    IvZombie.setImageResource(R.drawable.zombieaplastado);
 
-                //EJECUTAR UNA FUNCION EN UN DETERMINADO TIEMPO
-                //Despues de 500 milisegundo la imagen regresa a zombie normal
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                    //EJECUTAR UNA FUNCION EN UN DETERMINADO TIEMPO
+                    //Despues de 500 milisegundo la imagen regresa a zombie normal
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
 
-                        IvZombie.setImageResource(R.drawable.zombie);
-                        Movimiento();
-                    }
-                }, 500);
-
+                            IvZombie.setImageResource(R.drawable.zombie);
+                            Movimiento();
+                        }
+                    }, 500);
+                }
             }
         });
     }
@@ -150,7 +153,62 @@ public class EscenarioJuego extends AppCompatActivity {
             //CUANDO SE ACABA EL TIEMPO
             public void onFinish() {
                 TvTiempo.setText("0 s");
+                GameOver = true;
+                MensajeGameOver();
             }
         }.start();
     }
+    private void MensajeGameOver(){
+        String ubicacion = "fuentes/zombie.TTF";
+        Typeface typeface = Typeface.createFromAsset(EscenarioJuego.this.getAssets(),ubicacion);
+
+        TextView SeacaboTXT, HasmatadoTXT, NumeroTXT;
+        Button JUGARDENUEVO, IRMENU, PUNTAJES;
+
+        miDialog.setContentView(R.layout.gameover);
+
+        SeacaboTXT = miDialog.findViewById(R.id.SeacaboTXT);
+        HasmatadoTXT = miDialog.findViewById(R.id.HasmatadoTXT);
+        NumeroTXT = miDialog.findViewById(R.id.NumeroTXT);
+
+        JUGARDENUEVO = miDialog.findViewById(R.id.JUGARDENUEVO);
+        IRMENU = miDialog.findViewById(R.id.IRMENU);
+        PUNTAJES = miDialog.findViewById(R.id.PUNTAJES);
+
+        String zombies = String.valueOf(contador);
+        NumeroTXT.setText(zombies);
+
+        SeacaboTXT.setTypeface(typeface);
+        HasmatadoTXT.setTypeface(typeface);
+        NumeroTXT.setTypeface(typeface);
+
+        JUGARDENUEVO.setTypeface(typeface);
+        IRMENU.setTypeface(typeface);
+        PUNTAJES.setTypeface(typeface);
+
+        JUGARDENUEVO.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void OnClick(View view){
+                Toast.makeText(EscenarioJuego.this, "JUGAR DE NUEVO", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        IRMENU.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void OnClick(View view){
+                Toast.makeText(EscenarioJuego.this, "MENU", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        PUNTAJES.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void OnClick(View view){
+                Toast.makeText(EscenarioJuego.this, "PUNTAJES", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        miDialog.show();
+
+    }
+
 }

@@ -42,4 +42,12 @@
 
     <string name="AnchoTv">-</string>
     <string name="AltoTv">-</string>
+
+    <string name="SeacaboTXT">!Se acabó el tiempo¡</string>
+    <string name="HasmatadoTXT">Has Matado</string>
+    <string name="NumeroTXT"> -- </string>
+    <string name="JUGARDENUEVO">JUGAR DE NUEVO</string>
+    <string name="IRMENU">MENÚ</string>
+    <string name="PUNTAJES">VER PUNTAJES</string>
+
 </resources>
