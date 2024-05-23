@@ -85,7 +85,7 @@ public class EscenarioJuego extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        JUGADORES = firebaseDatabase.getReference("JUGADORES");
+        JUGADORES = firebaseDatabase.getReference("MI DATA BASE JUGADORES");
 
         miDialog = new Dialog(EscenarioJuego.this);
 
