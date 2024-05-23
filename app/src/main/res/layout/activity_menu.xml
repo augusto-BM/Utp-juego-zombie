@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/background_with_overlay"
     tools:context=".Menu">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -35,8 +35,8 @@
         <!-- IMAGEN ZOMBIE -->
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imagen"
-            android:src="@drawable/zombie"
-            android:layout_width="150dp"
+            android:src="@drawable/logogame"
+            android:layout_width="250dp"
             android:layout_height="150dp" />
 
         <!-- UID -->

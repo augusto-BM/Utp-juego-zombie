@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/background_with_overlay"
     tools:context=".Registro">
 
 
@@ -16,6 +16,13 @@
         android:padding="10dp"
         android:gravity="center">
 
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            app:srcCompat="@drawable/logogame" />
+
         <!-- CORREO -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -23,10 +30,10 @@
 
             <EditText
                 android:id="@+id/correoEt"
+                android:textColorHint="@color/white"
                 android:hint="@string/correoEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:inputType="textEmailAddress"
                 android:importantForAutofill="no" />
             
