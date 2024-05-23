@@ -14,10 +14,16 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="350dp">
+        android:paddingTop="150dp">
 
         <!-- BOTON LOGIN -->
 
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="100dp"
+            android:layout_height="180dp"
+            android:src="@drawable/dancing_zombie"
+
+            />
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="250dp"

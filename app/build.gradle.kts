@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
 
     //_____________________________   CONECTAR CON FIREBASE   _______________________________
     // Import the Firebase BoM
