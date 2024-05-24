@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:padding="10dp"
         android:gravity="center">
 
@@ -26,11 +28,14 @@
         <!-- CORREO -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/correoEt"
-                android:textColorHint="@color/white"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:hint="@string/correoEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,6 +48,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:passwordToggleEnabled="true">
 
             <EditText
@@ -50,7 +57,8 @@
                 android:hint="@string/passEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:inputType="textPassword"
                 android:importantForAutofill="no" />
 
@@ -59,12 +67,16 @@
         <!-- NOMBRE -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/nombreEt"
                 android:hint="@string/nombreEt"
                 android:layout_width="match_parent"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="text" />
@@ -77,6 +89,8 @@
             android:text="@string/fechaTxt"
             android:gravity="center"
             android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -86,7 +100,7 @@
             android:id="@+id/Registrar"
             android:text="@string/Registrar"
             android:layout_marginTop="10dp"
-            android:background="@drawable/boton_personalizado"
+            android:background="@drawable/rounded_button"
             android:textSize="20sp"
             android:textColor="#ffffff"
             android:layout_width="match_parent"

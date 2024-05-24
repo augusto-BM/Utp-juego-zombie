@@ -25,11 +25,16 @@
         <!-- CORREO ELECTRONICO LOGIN-->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            app:hintTextColor="#ffffff">
 
             <EditText
                 android:id="@+id/correoLogin"
                 android:hint="@string/correoLogin"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -42,11 +47,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/passLogin"
                 android:hint="@string/passLogin"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -60,7 +69,7 @@
         <Button
             android:id="@+id/BtnLogin"
             android:text="@string/BtnLogin"
-            android:background="#086a87"
+            android:background="@drawable/rounded_button"
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
