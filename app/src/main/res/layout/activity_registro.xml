@@ -103,7 +103,7 @@
             android:background="@drawable/rounded_button"
             android:textSize="20sp"
             android:textColor="#ffffff"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

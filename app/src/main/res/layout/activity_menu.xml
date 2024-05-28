@@ -111,7 +111,7 @@
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"/>
 
         <!-- BOTON PUNTUACIONES -->
@@ -122,7 +122,7 @@
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
         <!-- BOTON ACERCA DE -->
@@ -133,7 +133,7 @@
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
         <!-- BOTON CERRAR SESION -->
@@ -144,7 +144,7 @@
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:textColor="#ffffff"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
