@@ -146,5 +146,13 @@
             android:textColor="#ffffff"
             android:layout_width="200dp"
             android:layout_height="wrap_content" />
+
+        <!-- ZOMBIE GIF -->
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="100dp"
+            android:layout_height="180dp"
+            android:src="@drawable/zombi2"
+            />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
