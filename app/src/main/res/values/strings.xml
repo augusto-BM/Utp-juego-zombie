@@ -9,6 +9,8 @@
     <string name="correoEt">Correo Electronico</string>
     <string name="passEt">Contraseña</string>
     <string name="nombreEt">Nombre</string>
+    <string name="edadEt">Edad</string>
+    <string name="paisEt">Pais</string>
     <string name="fechaTxt">Fecha</string>
     <string name="Registrar">REGISTRAR</string>
 
@@ -18,16 +20,21 @@
     <string name="BtnLogin">INICIAR SESION</string>
 
     //DEFINIMOS LAS VARIABLES DE MENU
+    <string name="MiPerfiltxt">Mi Perfil</string>
     <string name="MiPuntuaciontxt">Mi Puntuacion</string>
     <string name="Zombies"> -- </string>
     <string name="uid"> -- </string>
     <string name="correo"> -- </string>
     <string name="nombre"> -- </string>
+    <string name="edad"> -- </string>
+    <string name="pais"> -- </string>
     <string name="fecha"> -- </string>
 
     <string name="Menutxt">Menu</string>
 
     <string name="JugarBtn">Jugar</string>
+    <string name="EditarBtn">Editar</string>
+    <string name="CambiarPassBtn">Cambiar Contraseña</string>
     <string name="PuntuacionesBtn">Puntuaciones</string>
     <string name="AcercaDeBtn">Acerca de</string>
     <string name="cerrarSesionBtn">Cerrar Sesion</string>

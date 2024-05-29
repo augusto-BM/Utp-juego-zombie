@@ -23,11 +23,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Menu extends AppCompatActivity {
 
-    TextView MiPuntuaciontxt, Zombies, uid, correo, nombre, fecha, Menutxt;
-    Button cerrarSesion, JugarBtn, PuntuacionesBtn, AcercaDeBtn;
+    TextView MiPuntuaciontxt, Zombies, uid, correo, nombre, edad, pais, fecha, Menutxt;
+    Button cerrarSesion, JugarBtn, EditarBtn, CambiarPassBtn, PuntuacionesBtn, AcercaDeBtn;
+    CircleImageView imagenPerfil;
 
     FirebaseAuth auth; //FIREBASE AUTENTICACION
     FirebaseUser user;
@@ -56,16 +60,22 @@ public class Menu extends AppCompatActivity {
         String ubicacion = "fuentes/zombie.TTF";
         Typeface Tf = Typeface.createFromAsset(Menu.this.getAssets(), ubicacion);
 
+        //PEFIL
         MiPuntuaciontxt = findViewById(R.id.MiPuntuaciontxt);
+        imagenPerfil = findViewById(R.id.imagenPerfil);
         uid = findViewById(R.id.uid);
         correo = findViewById(R.id.correo);
         fecha = findViewById(R.id.fecha);
         nombre = findViewById(R.id.nombre);
+        edad = findViewById(R.id.edad);
+        pais = findViewById(R.id.pais);
         Menutxt = findViewById(R.id.Menutxt);
         Zombies = findViewById(R.id.Zombies);
 
-
+        //OPCIONES DEL JUEGO
         JugarBtn = findViewById(R.id.JugarBtn);
+        EditarBtn = findViewById(R.id.EditarBtn);
+        CambiarPassBtn = findViewById(R.id.CambiarPassBtn);
         PuntuacionesBtn = findViewById(R.id.PuntuacionesBtn);
         AcercaDeBtn = findViewById(R.id.AcercaDeBtn);
         cerrarSesion = findViewById(R.id.cerrarSesionBtn);
@@ -75,9 +85,16 @@ public class Menu extends AppCompatActivity {
         uid.setTypeface(Tf);
         correo.setTypeface(Tf);
         nombre.setTypeface(Tf);
+        edad.setTypeface(Tf);
+        pais.setTypeface(Tf);
+        Zombies.setTypeface(Tf);
+
         Menutxt.setTypeface(Tf);
         fecha.setTypeface(Tf);
+
         JugarBtn.setTypeface(Tf);
+        EditarBtn.setTypeface(Tf);
+        CambiarPassBtn.setTypeface(Tf);
         PuntuacionesBtn.setTypeface(Tf);
         AcercaDeBtn.setTypeface(Tf);
         cerrarSesion.setTypeface(Tf);
@@ -104,6 +121,20 @@ public class Menu extends AppCompatActivity {
                 Toast.makeText(Menu.this, "ENVIANDO PARAMETROS", Toast.LENGTH_SHORT).show();
 
 
+            }
+        });
+
+        EditarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        CambiarPassBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Menu.this, "CAMBIAR CONTRASEÑA", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -169,14 +200,24 @@ public class Menu extends AppCompatActivity {
                     String uidString = ""+ds.child("Uid").getValue();
                     String emailString = ""+ds.child("Email").getValue();
                     String nombreString = ""+ds.child("Nombres").getValue();
+                    String edadString = ""+ds.child("Edad").getValue();
+                    String paisString = ""+ds.child("Pais").getValue();
                     String fechaString = ""+ds.child("Fecha").getValue();
+                    String imagen = ""+ds.child("Imagen").getValue();
 
                     //SETEAR LOS DATOS DE LOS TEXTVIEW CON EL DATO DEL USUARIO LOGUEADO
                     Zombies.setText(zombiesString);
                     uid.setText(uidString);
                     correo.setText(emailString);
                     nombre.setText(nombreString);
+                    edad.setText(edadString);
+                    pais.setText(paisString);
                     fecha.setText(fechaString);
+                    try {
+                        Picasso.get().load(imagen).into(imagenPerfil);
+                    } catch (Exception e){
+                        Picasso.get().load(R.drawable.soldado).into(imagenPerfil);
+                    }
                 }
             }
 

@@ -58,7 +58,9 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth:22.3.1")         /*AUTENTICACIÓN*/
     implementation ("com.google.firebase:firebase-database:20.3.1")     /*BASE DATOS*/
     //-----------------------------------------------------------------------------------
-    implementation ("com.airbnb.android:lottie:3.0.1")
+    implementation ("com.airbnb.android:lottie:3.0.1")      /*PARA HACER ANIMACIONES 3.0.1*/
+    implementation ("com.squareup.picasso:picasso:2.71828") /*GESTIONAR IMAGEN*/
+    implementation ("de.hdodenhof:circleimageview:3.0.1")   /*IMAGEN CIRCULAR*/
     //-----------------------------------------------------------------------------------
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

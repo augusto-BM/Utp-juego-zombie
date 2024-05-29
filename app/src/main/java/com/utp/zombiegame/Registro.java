@@ -33,7 +33,7 @@ import java.util.HashMap;
 
 public class Registro extends AppCompatActivity {
 
-    EditText correoEt, passEt, nombreEt;
+    EditText correoEt, passEt, nombreEt, edadEt, paisEt;
     TextView fechaTxt;
     Button Registrar;
     FirebaseAuth auth; //FIREBASE AUTENTICACION
@@ -52,6 +52,8 @@ public class Registro extends AppCompatActivity {
         correoEt = findViewById(R.id.correoEt);
         passEt = findViewById(R.id.passEt);
         nombreEt = findViewById(R.id.nombreEt);
+        edadEt = findViewById(R.id.edadEt);
+        paisEt = findViewById(R.id.paisEt);
         fechaTxt = findViewById(R.id.fechaTxt);
         Registrar = findViewById(R.id.Registrar);
 
@@ -107,6 +109,8 @@ public class Registro extends AppCompatActivity {
                             String correoString = correoEt.getText().toString();
                             String passString = passEt.getText().toString();
                             String nombreString = nombreEt.getText().toString();
+                            String edadString = edadEt.getText().toString();
+                            String paisString = paisEt.getText().toString();
                             String fechaString = fechaTxt.getText().toString();
 
                             /*HashMap sirve para asignarle claves a los valores y pueda ser reconocido por la BBDD*/
@@ -115,6 +119,9 @@ public class Registro extends AppCompatActivity {
                             DatosJUGADOR.put("Email",correoString);
                             DatosJUGADOR.put("Password",passString);
                             DatosJUGADOR.put("Nombres",nombreString);
+                            DatosJUGADOR.put("Edad",edadString);
+                            DatosJUGADOR.put("Pais",paisString);
+                            DatosJUGADOR.put("Imagen","");
                             DatosJUGADOR.put("Fecha",fechaString);
                             DatosJUGADOR.put("Zombies",contador);
 
