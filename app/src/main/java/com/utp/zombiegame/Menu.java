@@ -137,7 +137,7 @@ public class Menu extends AppCompatActivity {
         EditarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
                 EditarDatos();
             }
         });
@@ -368,11 +368,11 @@ public class Menu extends AppCompatActivity {
                     //SETEAR LOS DATOS DE LOS TEXTVIEW CON EL DATO DEL USUARIO LOGUEADO
                     Zombies.setText(zombiesString);
                     uid.setText(uidString);
-                    correo.setText(emailString);
-                    nombre.setText(nombreString);
-                    edad.setText(edadString);
-                    pais.setText(paisString);
-                    fecha.setText(fechaString);
+                    correo.setText("Correo: "+emailString);
+                    nombre.setText("Nombre: "+nombreString);
+                    edad.setText("Edad: "+edadString);
+                    pais.setText("Pais: "+paisString);
+                    fecha.setText("Se registro el: "+fechaString);
                     try {
                         Picasso.get().load(imagen).into(imagenPerfil);
                     } catch (Exception e){

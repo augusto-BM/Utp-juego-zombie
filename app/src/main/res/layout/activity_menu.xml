@@ -114,9 +114,10 @@
             android:id="@+id/MiPuntuaciontxt"
             android:text="@string/MiPuntuaciontxt"
             android:textSize="25sp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#0489b1"
+            android:textColorHint="#0489b1"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -139,8 +140,9 @@
            android:text="@string/Zombies"
            android:textSize="35sp"
            android:gravity="center"
-           android:textColor="#FFFFFF"
-           android:textColorHint="#FFFFFF"
+           android:textColor="#04b45f"
+           android:textColorHint="#04b45f"
+           android:textStyle="bold"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content" />
 
