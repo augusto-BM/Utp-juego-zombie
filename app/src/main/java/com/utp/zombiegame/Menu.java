@@ -1,20 +1,26 @@
 package com.utp.zombiegame;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +30,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -128,6 +138,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
+                EditarDatos();
             }
         });
 
@@ -159,6 +170,155 @@ public class Menu extends AppCompatActivity {
                 CerrarSesion();
             }
         });
+    }
+
+    //METODO PARA CAMBIAR LOS DATOS
+    private void EditarDatos() {
+        String [] Opciones = {"Foto de perfil", "Cambiar nombre", "Cambiar edad", "Cambiar pais"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setItems(Opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if(i == 0){
+                    ActualizarFotoPerfil();
+                }
+                if(i == 1){
+                    ActualizarNombre("Nombres");
+                }
+                if(i == 2){
+                    ActualizarEdad("Edad");
+                }
+                if(i == 3){
+                    ActualizarPais("Pais");
+                }
+            }
+        });
+        builder.create().show();
+    }
+
+
+    private void ActualizarFotoPerfil() {
+    }
+    private void ActualizarNombre(final String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Cambiar: "+key);
+        LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
+        linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
+        linearLayoutCompat.setPadding(10, 10, 10, 10);
+        EditText editText = new EditText(this);
+        editText.setHint("Ingrese "+key);
+        linearLayoutCompat.addView(editText);
+        builder.setView(linearLayoutCompat);
+
+        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
+        builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                String value = editText.getText().toString().trim();
+                HashMap<String, Object> result = new HashMap<>();
+                result.put(key, value);
+                JUGADORES.child(user.getUid()).updateChildren(result)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
+    }
+    private void ActualizarEdad(final String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Cambiar: "+key);
+        LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
+        linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
+        linearLayoutCompat.setPadding(10, 10, 10, 10);
+        EditText editText = new EditText(this);
+        editText.setHint("Ingrese "+key);
+        linearLayoutCompat.addView(editText);
+        builder.setView(linearLayoutCompat);
+
+        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
+        builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                String value = editText.getText().toString().trim();
+                HashMap<String, Object> result = new HashMap<>();
+                result.put(key, value);
+                JUGADORES.child(user.getUid()).updateChildren(result)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
+    }
+    private void ActualizarPais(final String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Cambiar: "+key);
+        LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
+        linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
+        linearLayoutCompat.setPadding(10, 10, 10, 10);
+        EditText editText = new EditText(this);
+        editText.setHint("Ingrese "+key);
+        linearLayoutCompat.addView(editText);
+        builder.setView(linearLayoutCompat);
+
+        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
+        builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                String value = editText.getText().toString().trim();
+                HashMap<String, Object> result = new HashMap<>();
+                result.put(key, value);
+                JUGADORES.child(user.getUid()).updateChildren(result)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
     }
 
     @Override
