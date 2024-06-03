@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="#0b4c5f"
+    android:background="@drawable/background_splah"
+
 
     tools:context=".Splash">
 
@@ -21,8 +22,8 @@
             android:src="@drawable/splash"/>-->
         <!-- ZOMBIE GIF-->
         <pl.droidsonroids.gif.GifImageView
-            android:layout_width="400dp"
-            android:layout_height="300dp"
+            android:layout_width="500dp"
+            android:layout_height="400dp"
             android:src="@drawable/zombiehand"
             />
         <pl.droidsonroids.gif.GifImageView
