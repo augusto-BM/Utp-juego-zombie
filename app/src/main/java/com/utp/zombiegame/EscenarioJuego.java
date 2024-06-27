@@ -61,6 +61,7 @@ public class EscenarioJuego extends AppCompatActivity {
     private MediaPlayer mediaBoton;
     private MediaPlayer mediaGameOver;
     private MediaPlayer mediaDisparo;
+    private MediaPlayer mediaZoombie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class EscenarioJuego extends AppCompatActivity {
         mediaGameOver = MediaPlayer.create(this, R.raw.gameoversound);
         mediaDisparo = MediaPlayer.create(this, R.raw.disparosound);
         mediaBoton = MediaPlayer.create(this, R.raw.mainbtnsounds);
+        mediaZoombie = MediaPlayer.create(this, R.raw.zoombiedeathsound);
 
         //ACÁ ASIGNAMOS EL AUDIO DE FONDO Y LO COLOCAMOS EN LOOP.
         mediaFondo.start();
@@ -133,6 +135,12 @@ public class EscenarioJuego extends AppCompatActivity {
                         mediaDisparo.seekTo(0); // Reinicia la posición al inicio
                         mediaDisparo.start();
                     }
+                    //ESTO ES PARA QUE EL SONIDO DEL ZOOMBIE FUNCIONE A PESAR DE QUE NO SE TERMINE DE REPRODUCIR EL ANTERIOR SONDIDO DEL ZOOMBIE
+                    if (mediaZoombie != null) {
+                        mediaZoombie.seekTo(0); // Reinicia la posición al inicio
+                        mediaZoombie.start();
+                    }
+
                     contador++; //contador aumenta de uno en uno
                     TvContador.setText(String.valueOf(contador)); //seteamos y convertimos a string
                     //La imagen cambia a zombie aplastado
