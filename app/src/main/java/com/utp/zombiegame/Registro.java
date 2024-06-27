@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -38,6 +39,10 @@ public class Registro extends AppCompatActivity {
     Button Registrar;
     FirebaseAuth auth; //FIREBASE AUTENTICACION
 
+    private MediaPlayer mediaFondo;//INSTANCIA DEL AUDIO DE FONDO
+    private MediaPlayer mediaBoton;
+    private MediaPlayer mediaBotonNegacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +53,14 @@ public class Registro extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        mediaFondo = MediaPlayer.create(this, R.raw.registrosound);
+        mediaBoton = MediaPlayer.create(this, R.raw.mainbtnsounds);
+        mediaBotonNegacion = MediaPlayer.create(this, R.raw.mainactivitybtnsoundno);
+
+        //ACÁ ASIGNAMOS EL AUDIO Y LO COLOCAMOS EN LOOP.
+        mediaFondo.start();
+        mediaFondo.setLooping(true);
 
         correoEt = findViewById(R.id.correoEt);
         passEt = findViewById(R.id.passEt);
@@ -81,13 +94,15 @@ public class Registro extends AppCompatActivity {
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     correoEt.setError("Correo invalido");
                     correoEt.setFocusable(true);
-
+                    mediaBotonNegacion.start();
                     /*Validar contraseña correcta con el formato*/
                 }else if(password.length()<6) {
                     passEt.setError("Contraseña debe ser mayor a 6");
                     passEt.setFocusable(true);
+                    mediaBotonNegacion.start();
                 }else{
                     RegistrarJugador(email, password);
+                    mediaBoton.start();
                 }
             }
         });
@@ -130,6 +145,7 @@ public class Registro extends AppCompatActivity {
                                                                                 //Nombre de la base de datos
                             DatabaseReference reference = database.getReference("MI DATA BASE JUGADORES");
                             reference.child(uidString).setValue(DatosJUGADOR);
+                            mediaFondo.stop();
                             startActivity(new Intent(Registro.this, Menu.class));
                             Toast.makeText(Registro.this, "USUARIO REGISTRADO EXITOSAMENTE", Toast.LENGTH_SHORT).show();
                             finish();
@@ -145,6 +161,23 @@ public class Registro extends AppCompatActivity {
                         Toast.makeText(Registro.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaFondo != null && mediaFondo.isPlaying()) {
+            mediaFondo.pause(); // O mediaFondo.stop() si quieres reiniciar la reproducción
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaFondo != null) {
+            mediaFondo.release();
+            mediaFondo = null;
+        }
     }
 }
 

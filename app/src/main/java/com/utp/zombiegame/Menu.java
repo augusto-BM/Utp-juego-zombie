@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -45,6 +46,8 @@ public class Menu extends AppCompatActivity {
 
     FirebaseAuth auth; //FIREBASE AUTENTICACION
     FirebaseUser user;
+    private MediaPlayer mediaFondo; //INSTANCIA DEL AUDIO DE FONDO
+    private MediaPlayer mediaBoton; //INSTANCIA DEL AUDIO DE FONDO
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference JUGADORES;
@@ -60,8 +63,17 @@ public class Menu extends AppCompatActivity {
             return insets;
         });
 
+        mediaFondo = MediaPlayer.create(this, R.raw.menusound);
+        mediaBoton = MediaPlayer.create(this, R.raw.menubtnsound);
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
+
+        if(user != null){
+            //ACÁ ASIGNAMOS EL AUDIO Y LO COLOCAMOS EN LOOP.
+            mediaFondo.start();
+            mediaFondo.setLooping(true);
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         JUGADORES = firebaseDatabase.getReference("MI DATA BASE JUGADORES");
@@ -113,7 +125,8 @@ public class Menu extends AppCompatActivity {
         JugarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mediaBoton.start();
+                mediaFondo.stop();
                 Toast.makeText(Menu.this, "Jugar", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Menu.this,EscenarioJuego.class);
 
@@ -137,6 +150,7 @@ public class Menu extends AppCompatActivity {
         EditarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 //Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
                 EditarDatos();
             }
@@ -145,6 +159,7 @@ public class Menu extends AppCompatActivity {
         CambiarPassBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 Toast.makeText(Menu.this, "CAMBIAR CONTRASEÑA", Toast.LENGTH_SHORT).show();
             }
         });
@@ -152,6 +167,7 @@ public class Menu extends AppCompatActivity {
         PuntuacionesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 Toast.makeText(Menu.this, "Puntuaciones", Toast.LENGTH_SHORT).show();
             }
         });
@@ -159,6 +175,7 @@ public class Menu extends AppCompatActivity {
         AcercaDeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 Toast.makeText(Menu.this, "Acerca DE", Toast.LENGTH_SHORT).show();
             }
         });
@@ -167,6 +184,8 @@ public class Menu extends AppCompatActivity {
         cerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
+                mediaFondo.stop();
                 CerrarSesion();
             }
         });

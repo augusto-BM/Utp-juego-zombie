@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -55,6 +56,12 @@ public class EscenarioJuego extends AppCompatActivity {
     boolean GameOver = false;
     Dialog miDialog;
 
+    // VARIABLES PARA EL SONIDO
+    private MediaPlayer mediaFondo;
+    private MediaPlayer mediaBoton;
+    private MediaPlayer mediaGameOver;
+    private MediaPlayer mediaDisparo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +72,17 @@ public class EscenarioJuego extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //ASIGNAMOS LOS SONIDOS
+        mediaFondo = MediaPlayer.create(this, R.raw.escenariojuegosound);
+        mediaGameOver = MediaPlayer.create(this, R.raw.gameoversound);
+        mediaDisparo = MediaPlayer.create(this, R.raw.disparosound);
+        mediaBoton = MediaPlayer.create(this, R.raw.mainbtnsounds);
+
+        //ACÁ ASIGNAMOS EL AUDIO DE FONDO Y LO COLOCAMOS EN LOOP.
+        mediaFondo.start();
+        mediaFondo.setLooping(true);
+
         // ********************* INICIAR ANIMACION TIEMPO *************************
         // Inicializar la vista LottieAnimationView
         AnimacionReloj = findViewById(R.id.AnimacionReloj);
@@ -110,6 +128,11 @@ public class EscenarioJuego extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!GameOver){
+                    //ESTO ES PARA QUE EL SONIDO DEL DISPARO FUNCIONE A PESAR DE QUE NO SE TERMINE DE REPRODUCIR EL ANTERIOR DISPARO
+                    if (mediaDisparo != null) {
+                        mediaDisparo.seekTo(0); // Reinicia la posición al inicio
+                        mediaDisparo.start();
+                    }
                     contador++; //contador aumenta de uno en uno
                     TvContador.setText(String.valueOf(contador)); //seteamos y convertimos a string
                     //La imagen cambia a zombie aplastado
@@ -179,6 +202,8 @@ public class EscenarioJuego extends AppCompatActivity {
             }
             //CUANDO SE ACABA EL TIEMPO
             public void onFinish() {
+                //SOLO PAUSAMOS EL AUDIO DE FONDO, YA QUE SI LE DA VOLVER A JUGAR SE VOLVERÁ A EMITIR
+                mediaFondo.pause();
                 TvTiempo.setText("0 s");
                 GameOver = true;
                 MensajeGameOver();
@@ -189,6 +214,9 @@ public class EscenarioJuego extends AppCompatActivity {
     }
 
     private void MensajeGameOver(){
+        //COLOCAMOS EL SONIDO DEL GAMEOVER
+        mediaGameOver.start();
+
         LottieAnimationView AnimacionFinJuego;
         String ubicacion = "fuentes/zombie.TTF";
 
@@ -229,6 +257,8 @@ public class EscenarioJuego extends AppCompatActivity {
         JUGARDENUEVO.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                mediaBoton.start();//SONIDO DEL BOTON
+                mediaFondo.start();// CONTINUAMOS CON EL AUDIO DE FONDO.
                 contador=0;
                 miDialog.dismiss();
                 TvContador.setText("0");
@@ -242,6 +272,7 @@ public class EscenarioJuego extends AppCompatActivity {
         IRMENU.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 startActivity(new Intent(EscenarioJuego.this, Menu.class));
             }
 
@@ -250,6 +281,7 @@ public class EscenarioJuego extends AppCompatActivity {
         PUNTAJES.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                mediaBoton.start();
                 Toast.makeText(EscenarioJuego.this, "PUNTAJES", Toast.LENGTH_SHORT).show();
 
             }
