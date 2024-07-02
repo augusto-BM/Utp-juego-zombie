@@ -5,15 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.storage.StorageManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.media.MediaPlayer;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -41,8 +40,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.HashMap;
 
@@ -195,10 +192,14 @@ public class Menu extends AppCompatActivity {
         PuntuacionesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaBoton.start();
-                Toast.makeText(Menu.this, "Puntuaciones", Toast.LENGTH_SHORT).show();
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-            }
+
+                    mediaBoton.start();
+                    Intent intent = new Intent(Menu.this, Puntajes.class);
+                    startActivity(intent);
+                    Toast.makeText(Menu.this, "Puntos", Toast.LENGTH_SHORT).show();
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                }
+
         });
 
         AcercaDeBtn.setOnClickListener(new View.OnClickListener() {
