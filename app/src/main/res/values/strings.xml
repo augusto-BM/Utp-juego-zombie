@@ -57,4 +57,11 @@
     <string name="IRMENU">MENÚ</string>
     <string name="PUNTAJES">VER PUNTAJES</string>
 
+
+    //DATOS DEL JUGADOR EN LA LISTA
+
+    <string name="NombreJugador">Nombre</string>
+    <string name="CorreoJugador">Correo</string>
+    <string name="PuntajeJugador">Puntaje</string>
+
 </resources>
