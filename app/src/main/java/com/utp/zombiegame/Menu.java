@@ -167,6 +167,7 @@ public class Menu extends AppCompatActivity {
 
                 startActivity((intent));
                 Toast.makeText(Menu.this, "ENVIANDO PARAMETROS", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
 
             }
@@ -178,6 +179,7 @@ public class Menu extends AppCompatActivity {
                 mediaBoton.start();
                 //Toast.makeText(Menu.this, "EDITAR", Toast.LENGTH_SHORT).show();
                 EditarDatos();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -186,6 +188,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 mediaBoton.start();
                 Toast.makeText(Menu.this, "CAMBIAR CONTRASEÑA", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -194,6 +197,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 mediaBoton.start();
                 Toast.makeText(Menu.this, "Puntuaciones", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -202,6 +206,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 mediaBoton.start();
                 Toast.makeText(Menu.this, "Acerca DE", Toast.LENGTH_SHORT).show();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -212,6 +217,7 @@ public class Menu extends AppCompatActivity {
                 mediaBoton.start();
                 mediaFondo.stop();
                 CerrarSesion();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
     }
@@ -503,6 +509,7 @@ public class Menu extends AppCompatActivity {
         auth.signOut();
         startActivity(new Intent(Menu.this,MainActivity.class));
         Toast.makeText(this, "Sesion Cerrado exitosamente", Toast.LENGTH_SHORT).show();
+
     }
 
     //METODO PARA PARA LLAMAR LA INFORMACION DEL USUARIO LOGUEADO

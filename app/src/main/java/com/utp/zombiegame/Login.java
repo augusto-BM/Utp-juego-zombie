@@ -45,6 +45,8 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
+
+
         mediaFondo = MediaPlayer.create(this, R.raw.loginsound);
         mediaBoton = MediaPlayer.create(this, R.raw.mainbtnsounds);
         mediaBotonNegacion = MediaPlayer.create(this, R.raw.mainactivitybtnsoundno);
@@ -89,6 +91,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     /*METODO PARA LOGUEO DEL JUGADOR*/
     private void LogeoDeJugador(String email, String pass) {
         auth.signInWithEmailAndPassword(email, pass)
@@ -102,6 +105,7 @@ public class Login extends AppCompatActivity {
                             assert user != null; //Afirmamos que el usuario no es nulo
                             Toast.makeText(Login.this, "Bienvenido(a) "+user.getEmail(), Toast.LENGTH_SHORT).show();
                             finish();
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         }
                     }
                     //SI FALLA EL LOGUEO NOS VA A MOSTRAR UN MENSAJE

@@ -59,8 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this,"Has hecho click en el boton login", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
+
 
         //NOS DIRIGE ALA ACTIVIDAD DE REGISTRO
         BTNREGISTRO.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 /*CUANDO HAGAMOS CLICK EN EL BOTON REGISTRO NOS REDIRECCIONA A LA INTERFAZ REGISTRO*/
                 Intent intent = new Intent(MainActivity.this, Registro.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
     }
