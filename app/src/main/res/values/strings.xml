@@ -63,5 +63,16 @@
     <string name="NombreJugador">Nombre</string>
     <string name="CorreoJugador">Correo</string>
     <string name="PuntajeJugador">Puntaje</string>
+    <string name="EdadJugador">Edad</string>
+    <string name="PaisJugador">País</string>
+
+    //DETALLE DEL JUGADOR
+
+    <string name="INFORMACIONDETALLE">INFORMACION DEL JUGADOR</string>
+    <string name="NombresDetalle">Nombres</string>
+    <string name="CorreoDetalle">Correo</string>
+    <string name="PuntajeDetalle">Puntaje</string>
+    <string name="EdadDetalle">Edad</string>
+    <string name="PaisDetalle">País</string>
 
 </resources>

@@ -1,10 +1,13 @@
 package com.utp.zombiegame;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +22,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
 
     private Context context;
     private List<Usuario> usuarioList;
+    private Typeface tf;
 
     //Constructor
     public Adaptador(Context context, List<Usuario> usuarioList) {
         this.context = context;
         this.usuarioList = usuarioList;
+        this.tf = Typeface.createFromAsset(context.getAssets(),"fuentes/zombie.TTF");
     }
 
     @NonNull
@@ -40,18 +45,28 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
     public void onBindViewHolder(@NonNull MyHolder holder, int i) {
 
         //Obtener los datos del modelo
-        String Imagen = usuarioList.get(i).getImagen();
-        String Nombres = usuarioList.get(i).getNombres();
-        String Correo = usuarioList.get(i).getEmail();
+        final String Imagen = usuarioList.get(i).getImagen();
+        final String Nombres = usuarioList.get(i).getNombres();
+        final String Correo = usuarioList.get(i).getEmail();
+        final String Edad = usuarioList.get(i).getEdad();
+        final String Pais = usuarioList.get(i).getPais();
         int Zombies = usuarioList.get(i).getZombies();
 
         //Conversion a string
-        String Z = String.valueOf(Zombies);
+        final String Z = String.valueOf(Zombies);
 
         //DATOS DEL JUGADOR
         holder.NombreJugador.setText(Nombres);
         holder.CorreoJugador.setText(Correo);
         holder.PuntajeJugador.setText(Z);
+        holder.EdadJugador.setText(Edad);
+        holder.PaisJugador.setText(Pais);
+
+        //CAMBIAR TIPO DE LETRA
+        holder.NombreJugador.setTypeface(tf);
+        holder.CorreoJugador.setTypeface(tf);
+        holder.PuntajeJugador.setTypeface(tf);
+
 
         //IMAGEN DEL JUGADOR
         try {
@@ -62,6 +77,25 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
             //SI NO TIENE FOTO DE PERFIL
         }
 
+        //AL HACER CLICK EN UN JUGADOR
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, DetalleJugador.class);
+
+                intent.putExtra("Imagen",Imagen);
+                intent.putExtra("Nombres",Nombres);
+                intent.putExtra("Correo",Correo);
+                intent.putExtra("Puntaje",Z);
+                intent.putExtra("Pais",Pais);
+                intent.putExtra("Edad",Edad);
+
+                context.startActivity(intent);
+
+                Toast.makeText(context, ""+Correo, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -72,7 +106,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
     public class MyHolder extends RecyclerView.ViewHolder {
 
         CircleImageView ImagenJugador;
-        TextView NombreJugador, CorreoJugador, PuntajeJugador;
+        TextView NombreJugador, CorreoJugador, PuntajeJugador, EdadJugador, PaisJugador;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +116,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
             NombreJugador = itemView.findViewById(R.id.NombreJugador);
             CorreoJugador = itemView.findViewById(R.id.CorreoJugador);
             PuntajeJugador = itemView.findViewById(R.id.PuntajeJugador);
+            EdadJugador = itemView.findViewById(R.id.EdadJugador);
+            PaisJugador = itemView.findViewById(R.id.PaisJugador);
         }
     }
 }
