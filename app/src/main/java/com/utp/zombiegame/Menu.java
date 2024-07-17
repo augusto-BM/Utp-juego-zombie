@@ -184,7 +184,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaBoton.start();
-                Toast.makeText(Menu.this, "CAMBIAR CONTRASEÑA", Toast.LENGTH_SHORT).show();
+                mediaFondo.pause();
+                startActivity(new Intent(Menu.this, CambioDeContra.class));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
@@ -553,5 +554,13 @@ public class Menu extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mediaFondo != null && !mediaFondo.isPlaying()) {
+            mediaFondo.start();
+        }
     }
 }
