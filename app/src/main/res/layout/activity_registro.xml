@@ -89,7 +89,8 @@
                 android:textColorHint="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="textCapWords"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑüÜ "/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +110,7 @@
                 android:textColorHint="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +130,8 @@
                 android:textColorHint="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="textCapWords"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚñÑüÜ "/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

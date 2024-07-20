@@ -8,6 +8,9 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -369,124 +372,173 @@ public class Menu extends AppCompatActivity {
 
     private void ActualizarNombre(final String key) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cambiar: "+key);
+        builder.setTitle("Cambiar: " + key);
         LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
         linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
         linearLayoutCompat.setPadding(10, 10, 10, 10);
+
         EditText editText = new EditText(this);
-        editText.setHint("Ingrese "+key);
+        editText.setHint("Ingrese " + key);
+
+        // Filtro para permitir solo letras y espacios
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.setFilters(new InputFilter[] { new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (!Character.isLetter(source.charAt(i)) && source.charAt(i) != ' ') {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        }});
+
         linearLayoutCompat.addView(editText);
+
         builder.setView(linearLayoutCompat);
 
-        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
         builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 String value = editText.getText().toString().trim();
+
                 HashMap<String, Object> result = new HashMap<>();
                 result.put(key, value);
                 JUGADORES.child(user.getUid()).updateChildren(result)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "NOMBRE ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-                }
+            }
         });
+
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
             }
         });
+
         builder.create().show();
     }
+
     private void ActualizarEdad(final String key) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cambiar: "+key);
+        builder.setTitle("Cambiar: " + key);
         LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
         linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
         linearLayoutCompat.setPadding(10, 10, 10, 10);
+
         EditText editText = new EditText(this);
-        editText.setHint("Ingrese "+key);
+        editText.setHint("Ingrese " + key);
+
+        // Filtro para permitir solo números
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
         linearLayoutCompat.addView(editText);
+
         builder.setView(linearLayoutCompat);
 
-        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
         builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 String value = editText.getText().toString().trim();
+
                 HashMap<String, Object> result = new HashMap<>();
                 result.put(key, value);
                 JUGADORES.child(user.getUid()).updateChildren(result)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "EDAD ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
         });
+
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
             }
         });
+
         builder.create().show();
     }
+
     private void ActualizarPais(final String key) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Cambiar: "+key);
+        builder.setTitle("Cambiar: " + key);
         LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(this);
         linearLayoutCompat.setOrientation(linearLayoutCompat.VERTICAL);
         linearLayoutCompat.setPadding(10, 10, 10, 10);
+
         EditText editText = new EditText(this);
-        editText.setHint("Ingrese "+key);
+        editText.setHint("Ingrese " + key);
+
+        // Filtro para permitir solo letras y espacios
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.setFilters(new InputFilter[] { new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    if (!Character.isLetter(source.charAt(i)) && source.charAt(i) != ' ') {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        }});
+
         linearLayoutCompat.addView(editText);
+
         builder.setView(linearLayoutCompat);
 
-        //SI EL USUARIO HACE CLICK EN ACTUALIZAR
         builder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 String value = editText.getText().toString().trim();
+
                 HashMap<String, Object> result = new HashMap<>();
                 result.put(key, value);
                 JUGADORES.child(user.getUid()).updateChildren(result)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(Menu.this, "DATO ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "PAIS ACTUALIZADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Menu.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Menu.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
         });
+
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 Toast.makeText(Menu.this, "CANCELADO POR EL USUARIO", Toast.LENGTH_SHORT).show();
             }
         });
+
         builder.create().show();
     }
+
 
     @Override
     //ESTE METODO SE ABRE EL MINIJUEGO
