@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="400dp"
+        android:layout_height="540dp"
+        android:background="@drawable/background_with_overlay"
+        android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/unimov"
+            />
+
+        <TextView
+            android:id="@+id/ProfesorPOTXT"
+            android:text="@string/ProfesorPOTXT"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/ProfTXT"
+            android:text="@string/ProfTXT"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/IntegrantesPOTXT"
+            android:text="@string/IntegrantesPOTXT"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/DevTXT1"
+            android:text="@string/DevTXT1"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/DevTXT2"
+            android:text="@string/DevTXT2"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/DevTXT3"
+            android:text="@string/DevTXT3"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/DevTXT4"
+            android:text="@string/DevTXT4"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/DevTXT5"
+            android:text="@string/DevTXT5"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/OK"
+            android:text="@string/OK"
+            android:background="#B40D30"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.utp.zombiegame;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -74,6 +75,8 @@ public class Menu extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference JUGADORES;
 
+    Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +102,9 @@ public class Menu extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         JUGADORES = firebaseDatabase.getReference("MI DATA BASE JUGADORES");
+
+        dialog = new Dialog(Menu.this);;
+
 
         ReferenciaDeAlmacenamiento = FirebaseStorage.getInstance().getReference();
         PermisosdeAlmacenamiento = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -210,7 +216,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mediaBoton.start();
-                Toast.makeText(Menu.this, "Acerca DE", Toast.LENGTH_SHORT).show();
+                AcercaDe();
+                //Toast.makeText(Menu.this, "Acerca DE", Toast.LENGTH_SHORT).show();
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
@@ -225,6 +232,47 @@ public class Menu extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
+    }
+
+    private void AcercaDe() {
+
+        //UBICACION TIPO DE LETRA
+        String ubicacion = "fuentes/zombie.TTF";
+        Typeface Tf = Typeface.createFromAsset(Menu.this.getAssets(), ubicacion);
+
+        TextView ProfesorPOTXT,ProfTXT,IntegrantesPOTXT,DevTXT1,DevTXT2,DevTXT3,DevTXT4,DevTXT5;
+        Button OK;
+
+        dialog.setContentView(R.layout.acerca_de);
+
+        ProfesorPOTXT = dialog.findViewById(R.id.ProfesorPOTXT);
+        ProfTXT = dialog.findViewById(R.id.ProfTXT);
+        IntegrantesPOTXT = dialog.findViewById(R.id.IntegrantesPOTXT);
+        DevTXT1 = dialog.findViewById(R.id.DevTXT1);
+        DevTXT2 = dialog.findViewById(R.id.DevTXT2);
+        DevTXT3 = dialog.findViewById(R.id.DevTXT3);
+        DevTXT4 = dialog.findViewById(R.id.DevTXT4);
+        DevTXT5 = dialog.findViewById(R.id.DevTXT5);
+        OK = dialog.findViewById(R.id.OK);
+
+
+        OK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        ProfesorPOTXT.setTypeface(Tf);
+        ProfTXT.setTypeface(Tf);
+        IntegrantesPOTXT.setTypeface(Tf);
+        DevTXT1.setTypeface(Tf);
+        DevTXT2.setTypeface(Tf);
+        DevTXT3.setTypeface(Tf);
+        DevTXT4.setTypeface(Tf);
+        DevTXT5.setTypeface(Tf);
+
+        dialog.show();
     }
 
     //METODO PARA CAMBIAR LOS DATOS

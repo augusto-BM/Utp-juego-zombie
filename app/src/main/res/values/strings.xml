@@ -79,4 +79,16 @@
     <string name="NuevoPass">Nueva contraseña</string>
     <string name="CambiarPass">Cambiar contraseña</string>
 
+
+    <!--ACERCA DE-->
+    <string name="ProfesorPOTXT">Profesor:</string>
+    <string name="ProfTXT">CHARLES CAMASCA MACEDO</string>
+    <string name="IntegrantesPOTXT">Integrantes:</string>
+    <string name="DevTXT1">BRANDON CAMPOS TORRES</string>
+    <string name="DevTXT2">AUGUSTO BARRIENTOS MEJIA</string>
+    <string name="DevTXT3">ALVARO SANTA CRUZ VILLAR</string>
+    <string name="DevTXT4">ELIAS CHAPOÑAN CASTRO</string>
+    <string name="DevTXT5">PIERO TAVARA CHACALIAZA</string>
+    <string name="OK">OK</string>
+
 </resources>
