@@ -3,23 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#ffffff"
+    android:background="@drawable/detalle_jugador"
     tools:context=".DetalleJugador">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="15dp"
         android:orientation="vertical">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="75dp"
             android:layout_gravity="center"
             android:id="@+id/ImagenDetalle"
             android:layout_width="150dp"
-            android:layout_height="150dp"/>
+            android:layout_height="150dp" />
 
         <TextView
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:id="@+id/INFORMACIONDETALLE"
             android:gravity="center"
             android:textSize="25sp"
@@ -40,9 +41,9 @@
 
         <TextView
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:id="@+id/PuntajeDetalle"
             android:text="@string/PuntajeDetalle"
             android:textColor="#FF8000"
@@ -50,41 +51,41 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:textSize="18sp"
             android:id="@+id/CorreoDetalle"
             android:text="@string/CorreoDetalle"
-            android:textColor="#000000"
+            android:textColor="#DBDFE6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:textSize="18sp"
             android:id="@+id/EdadDetalle"
             android:text="@string/EdadDetalle"
-            android:textColor="#000000"
+            android:textColor="#DBDFE6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:textSize="18sp"
             android:id="@+id/PaisDetalle"
             android:text="@string/PaisDetalle"
-            android:textColor="#000000"
+            android:textColor="#DBDFE6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <pl.droidsonroids.gif.GifImageView
+            android:layout_marginTop="50dp"
             android:layout_width="100dp"
             android:layout_height="180dp"
             android:src="@drawable/dancing_zombie"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
