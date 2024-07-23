@@ -23,6 +23,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -222,83 +223,111 @@ public class EscenarioJuego extends AppCompatActivity {
     }
 
     private void MensajeGameOver(){
-        //COLOCAMOS EL SONIDO DEL GAMEOVER
-        mediaGameOver.start();
+        // Mostrar el GIF
+        showGif();
 
-        LottieAnimationView AnimacionFinJuego;
-        String ubicacion = "fuentes/zombie.TTF";
-
-        Typeface typeface = Typeface.createFromAsset(EscenarioJuego.this.getAssets(),ubicacion);
-
-        TextView SeacaboTXT, HasmatadoTXT, NumeroTXT;
-        Button JUGARDENUEVO, IRMENU, PUNTAJES;
-
-        miDialog.setContentView(R.layout.gameover);
-
-        SeacaboTXT = miDialog.findViewById(R.id.SeacaboTXT);
-        HasmatadoTXT = miDialog.findViewById(R.id.HasmatadoTXT);
-        NumeroTXT = miDialog.findViewById(R.id.NumeroTXT);
-
-        JUGARDENUEVO = miDialog.findViewById(R.id.JUGARDENUEVO);
-        IRMENU = miDialog.findViewById(R.id.IRMENU);
-        PUNTAJES = miDialog.findViewById(R.id.PUNTAJES);
-
-        String zombies = String.valueOf(contador);
-        NumeroTXT.setText(zombies);
-
-        SeacaboTXT.setTypeface(typeface);
-        HasmatadoTXT.setTypeface(typeface);
-        NumeroTXT.setTypeface(typeface);
-
-        JUGARDENUEVO.setTypeface(typeface);
-        IRMENU.setTypeface(typeface);
-        PUNTAJES.setTypeface(typeface);
-
-        // ********************* INICIAR ANIMACION FIN JUEGO *************************
-        // Inicializar la vista LottieAnimationView
-        AnimacionFinJuego = miDialog.findViewById(R.id.AnimacionFinJuego);
-
-        // Cargar y reproducir la animación del reloj desde la carpeta assets
-        AnimacionFinJuego.setAnimation("finjuego.json");
-        AnimacionFinJuego.playAnimation();
-        //*****************************************************************************
-        JUGARDENUEVO.setOnClickListener(new View.OnClickListener(){
+        // Esperar un tiempo antes de mostrar el diálogo de "Game Over"
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
-                mediaBoton.start();//SONIDO DEL BOTON
-                mediaFondo.start();// CONTINUAMOS CON EL AUDIO DE FONDO.
-                contador=0;
-                miDialog.dismiss();
-                TvContador.setText("0");
-                GameOver = false;
-                CuentaAtras();
-                Movimiento();
+            public void run() {
+                //COLOCAMOS EL SONIDO DEL GAMEOVER
+                mediaGameOver.start();
+
+                LottieAnimationView AnimacionFinJuego;
+                String ubicacion = "fuentes/zombie.TTF";
+
+                Typeface typeface = Typeface.createFromAsset(EscenarioJuego.this.getAssets(),ubicacion);
+
+                TextView SeacaboTXT, HasmatadoTXT, NumeroTXT;
+                Button JUGARDENUEVO, IRMENU, PUNTAJES;
+
+                miDialog.setContentView(R.layout.gameover);
+
+                SeacaboTXT = miDialog.findViewById(R.id.SeacaboTXT);
+                HasmatadoTXT = miDialog.findViewById(R.id.HasmatadoTXT);
+                NumeroTXT = miDialog.findViewById(R.id.NumeroTXT);
+
+                JUGARDENUEVO = miDialog.findViewById(R.id.JUGARDENUEVO);
+                IRMENU = miDialog.findViewById(R.id.IRMENU);
+                PUNTAJES = miDialog.findViewById(R.id.PUNTAJES);
+
+                String zombies = String.valueOf(contador);
+                NumeroTXT.setText(zombies);
+
+                SeacaboTXT.setTypeface(typeface);
+                HasmatadoTXT.setTypeface(typeface);
+                NumeroTXT.setTypeface(typeface);
+
+                JUGARDENUEVO.setTypeface(typeface);
+                IRMENU.setTypeface(typeface);
+                PUNTAJES.setTypeface(typeface);
+
+                // ********************* INICIAR ANIMACION FIN JUEGO *************************
+                // Inicializar la vista LottieAnimationView
+                AnimacionFinJuego = miDialog.findViewById(R.id.AnimacionFinJuego);
+
+                // Cargar y reproducir la animación del reloj desde la carpeta assets
+                AnimacionFinJuego.setAnimation("finjuego.json");
+                AnimacionFinJuego.playAnimation();
+                //*****************************************************************************
+                JUGARDENUEVO.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        mediaBoton.start();//SONIDO DEL BOTON
+                        mediaFondo.start();// CONTINUAMOS CON EL AUDIO DE FONDO.
+                        contador=0;
+                        miDialog.dismiss();
+                        TvContador.setText("0");
+                        GameOver = false;
+                        CuentaAtras();
+                        Movimiento();
+                    }
+
+                });
+
+                IRMENU.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        mediaBoton.start();
+                        startActivity(new Intent(EscenarioJuego.this, Menu.class));
+                    }
+
+                });
+
+                PUNTAJES.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        mediaBoton.start();
+                        Intent intent = new Intent(EscenarioJuego.this, Puntajes.class);
+                        startActivity(intent);
+                    }
+                });
+
+                miDialog.show();
             }
-
-        });
-
-        IRMENU.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                mediaBoton.start();
-                startActivity(new Intent(EscenarioJuego.this, Menu.class));
-            }
-
-        });
-
-        PUNTAJES.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                mediaBoton.start();
-                Toast.makeText(EscenarioJuego.this, "PUNTAJES", Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-        miDialog.show();
-
+        }, 3000); // Espera 3 segundos antes de mostrar el diálogo de "Game Over"
     }
+
+    private void showGif() {
+        Dialog gifDialog = new Dialog(EscenarioJuego.this);
+        gifDialog.setContentView(R.layout.gif_layout);
+
+        ImageView gifImageView = gifDialog.findViewById(R.id.gifImageView);
+
+        // Usar Glide para cargar el GIF
+        Glide.with(this).load(R.drawable.skull).into(gifImageView);
+
+        gifDialog.show();
+
+        // Cerrar el diálogo después de unos segundos
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                gifDialog.dismiss();
+            }
+        }, 3000); // Mostrar el GIF durante 3 segundos
+    }
+
 
     //PARA ACTUALIZAR PUNTAKE DEL JUGADOR EN BASE DE DATOS
     private void GuardarResultados(String key,int zombies){
