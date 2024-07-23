@@ -5,7 +5,7 @@
     android:layout_width="350dp"
     android:layout_height="700dp"
     android:layout_gravity="center"
-    android:background="#0B2F3A"
+    android:background="@drawable/green"
     android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center">
